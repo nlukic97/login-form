@@ -2,9 +2,11 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/contact">Contact</router-link> |
+      <router-link to="/Gallery">Gallery</router-link>
     </div>
-    <router-view/>
+    <router-view/> <!-- ovde se prikazuje strana u zavisnosti od toga koja je ruta pozvana iz router view-a -->
   </div>
 </template>
 
