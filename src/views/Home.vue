@@ -85,9 +85,25 @@ export default {
         border:1px solid green;
         width:50%;
         text-align: left;
+        background-color:#32475C;
+        color:#abb8c3;
         input {
           display:block;
-          // border:1px solid purple;
+          background-color:#32475C;
+          color:#fff;
+          border:none;
+          outline:none;
+          
+          &:focus, &:active {
+            outline:none;
+            background-color:#32475C;
+          }
+          &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus { //still an issue on autocomplete
+          border: none;
+          -webkit-text-fill-color: red;
+          -webkit-input-fill-background-color:red;
+          -webkit-box-shadow: none;
+          }
         }
         label{
           &[for="email"] {
