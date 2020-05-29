@@ -8,7 +8,7 @@
       <div class="right">
         <label for="email">Email</label>
         <input id="email" v-model="inputEmail" type="text">
-        <label for="pass">Password</label><button @click="changeVisibility">X</button> <!-- precica za pozivanje metode sa @, sv je sta koristis al praksa je v- za sve sto je vue -->
+        <label for="pass">Password</label><button @click="changeVisibility" id="eyeBtn"><i v-bind:class="eye"></i></button> <!-- precica za pozivanje metode sa @, sv je sta koristis al praksa je v- za sve sto je vue -->
         <input id="pass" v-model="inputPass" v-bind:type="visible" > <!-- bilo koji html atribut moze da se poveze sa nekim data elementom -->
         <div v-if="hasError">{{error}}</div>
         <button v-on:click="validate" id="loginBtn">Login</button>
@@ -35,6 +35,7 @@ export default {
       inputEmail:'',
       inputPass:'',
       visible: 'password',
+      eye: 'fas fa-eye',
       error:'The credentials are not correct.',
       hasError: false
     }
@@ -43,12 +44,15 @@ export default {
     changeVisibility: function(){
       if(this.visible === 'password'){
         this.visible = 'text';
+        this.eye = 'fas fa-eye-slash';
       } else {
         this.visible = 'password';
+        this.eye = 'fas fa-eye';
       }
     },
     validate: function(){
       if(this.inputEmail === this.email && this.inputPass === this.pass){
+        //this.hasError = false;
         this.$router.push({path: '/about'}) //ovim definises na koji view da te posalje. Mora this jer nije pozvan na ovom elementu. Mora ovako
         alert('Validation successful');
       } else {
@@ -93,10 +97,12 @@ export default {
           color:#fff;
           border:none;
           outline:none;
+          box-shadow: 0px 0px 3px 0px; //kako ovo ?
           
           &:focus, &:active {
             outline:none;
             background-color:#32475C;
+            box-shadow: 0px 0px 6px 0px;
           }
           &:-webkit-autofill, &:-webkit-autofill:hover, &:-webkit-autofill:focus { //still an issue on autocomplete
           border: none;
@@ -118,9 +124,18 @@ export default {
           }
         }
         button {
+          &#eyeBtn {
+            color:#fff;
+            background-color:rgba(0,0,0,0);
+            border:none;
+            outline:none;
+          }
           &#loginBtn { //id za login dugme
             display:block;
             width:80%;
+          }
+          &:hover {
+            cursor:pointer;
           }
         }
       }
