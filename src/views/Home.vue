@@ -8,10 +8,13 @@
       <div class="right">
         <label for="email">Email</label>
         <input id="email" v-model="inputEmail" type="text">
-        <label for="pass">Password</label><button @click="changeVisibility" id="eyeBtn"><i v-bind:class="eye"></i></button> <!-- precica za pozivanje metode sa @, sv je sta koristis al praksa je v- za sve sto je vue -->
+        <div id="passGroup"> <!-- Nisam bio siguran kako bez diva da napravim ovo-->
+          <label for="pass">Password</label>
+          <button @click="changeVisibility" id="eyeBtn"><i v-bind:class="eye"></i></button>
+        </div> <!-- precica za pozivanje metode sa @, sv je sta koristis al praksa je v- za sve sto je vue -->
         <input id="pass" v-model="inputPass" v-bind:type="visible" > <!-- bilo koji html atribut moze da se poveze sa nekim data elementom -->
         <div v-if="hasError">{{error}}</div>
-        <button v-on:click="validate" id="loginBtn">Login</button>
+        <button v-on:click="validate" id="loginBtn">Log in</button>
         <!-- {{visible}} -->
       </div>
     </div>
@@ -67,38 +70,53 @@ export default {
     .for {
       width:50%;
       margin: 0 auto;
-      border:1px solid red;
+      //border:1px solid red;
       display:flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center; //beware of this for the left box
       .left {
-        border:1px solid green;
+        //border:1px solid green;
+        background-color: #fff;
+        box-shadow: 0 0 3px #333;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
         width:50%;
+        height:160px;
         text-align: left;
         h3 {
           margin:0;
-          padding:0;
+          padding:0 30px;
         }
         p {
           margin:0;
-          padding:0;
+          padding:15px 30px 0 30px;
         }
       }
       .right {
-        border:1px solid green;
+        //border:1px solid green;
+        border-radius: 5px;
+        box-shadow: 0 0 20px;
         width:50%;
+        height:280px; 
         text-align: left;
         background-color:#32475C;
         color:#abb8c3;
         input {
           display:block;
           background-color:#32475C;
+          width:69%; //zasto ovde ide 69 %, iako je ostalo sve 70% ?
+          margin: 0 auto;
+          padding:10px 10px;
           color:#fff;
           border:none;
           outline:none;
-          box-shadow: 0px 0px 3px 0px; //kako ovo ?
-          
+          box-shadow: 0px 0px 3px rgb(69, 97, 126); //kako ovo ?
+          transition: 0.3s box-shadow;
+          &:hover{
+            box-shadow: 0px 0px 5px rgb(95, 134, 173);
+          }
           &:focus, &:active {
             outline:none;
             background-color:#32475C;
@@ -108,31 +126,52 @@ export default {
           border: none;
           -webkit-text-fill-color: red;
           -webkit-input-fill-background-color:red;
-          -webkit-box-shadow: none;
+          //-webkit-box-shadow: none;
           }
         }
         label{
           &[for="email"] {
           display:block;
           // border:1px solid orange;
-          margin:0;
+          margin:40px auto 0 auto;
+          width:75%;
           }
           &[for="pass"] {
             display:inline;
-            // width:30%;
             // border:1px solid orange;
+          }
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        div { //warning message
+          width:75%;
+          margin: 0 auto;
+          &#passGroup { //password + eye button
+          margin:15px auto 0 auto;
+          width:75%;
           }
         }
         button {
+          transition: 0.4s box-shadow;
           &#eyeBtn {
             color:#fff;
             background-color:rgba(0,0,0,0);
             border:none;
             outline:none;
+            border-radius: 50%;
+            &:hover {
+              box-shadow: 0px 0px 5px rgb(95, 134, 173);
+            }
           }
           &#loginBtn { //id za login dugme
             display:block;
-            width:80%;
+            width:75%;
+            margin: 25px auto 0 auto;
+            padding: 15px 0;
+            &:hover {
+              box-shadow: 0px 0px 5px #fff;
+            }
           }
           &:hover {
             cursor:pointer;
