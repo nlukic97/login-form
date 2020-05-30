@@ -75,6 +75,7 @@ export default {
       flex-direction: row;
       justify-content: space-between;
       align-items: center; //beware of this for the left box
+      transition: 1s width;
       .left {
         //border:1px solid green;
         background-color: #fff;
@@ -85,6 +86,7 @@ export default {
         width:50%;
         height:160px;
         text-align: left;
+        transition: 1s height;
         h3 {
           margin:0;
           padding:0 30px;
@@ -103,6 +105,7 @@ export default {
         text-align: left;
         background-color:#32475C;
         color:#abb8c3;
+        transition: 1s height;
         input {
           display:block;
           background-color:#32475C;
@@ -180,4 +183,37 @@ export default {
       }
     }
   }
+  @media only screen and (max-width: 860px) { 
+  .home {
+    .for {
+      width:80%;
+      transition:1s width;
+      .right {
+        height:300px;
+        transition: 1s height;
+      }
+      .left {
+        height:200px;
+        transition: 1s height;
+      }
+    }
+  }
+}
+  @media only screen and (max-width: 673px) {
+  .home {
+    .for {
+      width:95%;
+      transition:1s width;
+      .right {
+        height:300px;
+        transition: 1s height;
+      }
+      .left {
+        height:200px;
+        transition: 1s height;
+      }
+    }
+  }
+}
+
 </style>
