@@ -19,6 +19,8 @@
       </div>
     </div>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>1. email: <u>basic@basic.com</u> | pass: <u>secret</u></p>
+    <p>2. email: <u>admin@admin.com</u> | pass: <u>secret</u></p>
   </div>
 </template>
 
@@ -33,8 +35,10 @@ export default {
   },
   data: function(){ //ubacis ovde ovako da vracas data
     return {
-      email: 'nikola@nikola.com',
+      email: 'basic@basic.com',
       pass:'secret',
+      adminEmail:'admin@admin.com',
+      adminPass:'secret',
       inputEmail:'',
       inputPass:'',
       visible: 'password',
@@ -56,7 +60,10 @@ export default {
     validate: function(){
       if(this.inputEmail === this.email && this.inputPass === this.pass){
         //this.hasError = false;
-        this.$router.push({path: '/about'}) //ovim definises na koji view da te posalje. Mora this jer nije pozvan na ovom elementu. Mora ovako
+        this.$router.push({path: '/basic_user'}) //ovim definises na koji view da te posalje. Mora this jer nije pozvan na ovom elementu. Mora ovako
+        alert('Validation successful');
+      } else if(this.inputEmail === this.adminEmail && this.inputPass === this.adminPass){
+        this.$router.push({path: '/admin'}) //ovim definises na koji view da te posalje. Mora this jer nije pozvan na ovom elementu. Mora ovako
         alert('Validation successful');
       } else {
         this.hasError = true;
