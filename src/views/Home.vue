@@ -12,7 +12,7 @@
           <label for="pass">Password</label>
           <button @click="changeVisibility" id="eyeBtn"><i v-bind:class="eye"></i></button>
         </div> <!-- precica za pozivanje metode sa @, sv je sta koristis al praksa je v- za sve sto je vue -->
-        <input id="pass" v-model="inputPass" v-bind:type="visible" > <!-- bilo koji html atribut moze da se poveze sa nekim data elementom -->
+        <input id="pass" v-model="inputPass" v-bind:type="visible" v-on:keyup.enter="validate"> <!-- bilo koji html atribut moze da se poveze sa nekim data elementom -->
         <div v-if="hasError">{{error}}</div>
         <button v-on:click="validate" id="loginBtn">Log in</button>
         <!-- {{visible}} -->
@@ -74,6 +74,7 @@ export default {
 </script>
 <style lang="scss" scoped> //ako pise scoped, onda je vezano samo za sve sto je za ovu komponentu
   .home{
+    font-family: 'Trebuchet MS';
     .for {
       width:50%;
       margin: 0 auto;
@@ -86,7 +87,7 @@ export default {
       .left {
         //border:1px solid green;
         background-color: #fff;
-        box-shadow: 0 0 3px #333;
+        // box-shadow: 0 0 3px #333;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -96,17 +97,21 @@ export default {
         transition: 1s height;
         h3 {
           margin:0;
-          padding:0 30px;
+          padding:0 40px;
+          font-size:30px;
+          color:#000;
         }
         p {
           margin:0;
-          padding:15px 30px 0 30px;
+          padding:15px 40px 0 40px;
+          font-size:15px;
+          color:rgb(177, 174, 174);
         }
       }
       .right {
         //border:1px solid green;
         border-radius: 5px;
-        box-shadow: 0 0 20px;
+        box-shadow: 0 0 15px #32475C;
         width:50%;
         height:280px; 
         text-align: left;
@@ -114,12 +119,14 @@ export default {
         color:#abb8c3;
         transition: 1s height;
         input {
+          font-size:15px;
+          font-weight: normal;
           display:block;
           background-color:#32475C;
           width:69%; //zasto ovde ide 69 %, iako je ostalo sve 70% ?
-          margin: 0 auto;
-          padding:10px 10px;
-          color:#fff;
+          margin: 5px auto 0 auto;
+          padding:8px 10px;
+          color:#d2e2f0;
           border:none;
           outline:none;
           box-shadow: 0px 0px 3px rgb(69, 97, 126); //kako ovo ?
@@ -140,9 +147,9 @@ export default {
           }
         }
         label{
+          font-size: 14px;
           &[for="email"] {
           display:block;
-          // border:1px solid orange;
           margin:40px auto 0 auto;
           width:75%;
           }
@@ -170,14 +177,13 @@ export default {
             border:none;
             outline:none;
             border-radius: 50%;
-            &:hover {
-              box-shadow: 0px 0px 5px rgb(95, 134, 173);
-            }
+            font-size:18px;
+            margin-left:5px;
           }
           &#loginBtn { //id za login dugme
             display:block;
             width:75%;
-            margin: 25px auto 0 auto;
+            margin: 20px auto 0 auto;
             padding: 15px 0;
             &:hover {
               box-shadow: 0px 0px 5px #fff;
@@ -217,6 +223,22 @@ export default {
       }
       .left {
         height:200px;
+        transition: 1s height;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 350px) {
+  .home {
+    .for {
+      width:95%;
+      transition:1s width;
+      .right {
+        height:310px;
+        transition: 1s height;
+      }
+      .left {
+        height:250px;
         transition: 1s height;
       }
     }
