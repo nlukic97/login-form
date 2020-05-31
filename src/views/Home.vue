@@ -78,16 +78,13 @@ export default {
     .for {
       width:50%;
       margin: 0 auto;
-      //border:1px solid red;
       display:flex;
       flex-direction: row;
       justify-content: space-between;
-      align-items: center; //beware of this for the left box
+      align-items: center;
       transition: 1s width;
       .left {
-        //border:1px solid green;
         background-color: #fff;
-        // box-shadow: 0 0 3px #333;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -109,7 +106,6 @@ export default {
         }
       }
       .right {
-        //border:1px solid green;
         border-radius: 5px;
         box-shadow: 0 0 15px #32475C;
         width:50%;
@@ -155,7 +151,6 @@ export default {
           }
           &[for="pass"] {
             display:inline;
-            // border:1px solid orange;
           }
           &:hover {
             cursor: pointer;
