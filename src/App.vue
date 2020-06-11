@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <!-- <router-link to="/basic_user">Basic homepage</router-link> | 
-      <router-link to="/admin">Admin Homepage</router-link> |  -->
+      <router-link to="/basic_user">Basic homepage</router-link> | 
+      <router-link to="/admin">Admin Homepage</router-link> | 
     </div>
+    
     <router-view/> <!-- ovde se prikazuje strana u zavisnosti od toga koja je ruta pozvana iz router view-a -->
   </div>
 </template>

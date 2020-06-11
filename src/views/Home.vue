@@ -18,7 +18,6 @@
         <!-- {{visible}} -->
       </div>
     </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
     <p>1. email: <u>basic@basic.com</u> | pass: <u>secret</u></p>
     <p>2. email: <u>admin@admin.com</u> | pass: <u>secret</u></p>
   </div>
@@ -26,13 +25,10 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
-  },
   data: function(){ //ubacis ovde ovako da vracas data
     return {
       email: 'basic@basic.com',
